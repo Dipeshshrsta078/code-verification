@@ -1,11 +1,15 @@
 import "./App.css";
 
-import CodeVerification from "./components/CodeVerification";
+import CodeVerification from "./views/CodeVerification";
+import Success from "./views/Success";
+
+import { useContext } from "react";
+import { VerifiedContext } from "./context/VerificationContext";
+
 function App() {
+  const verificationContext = useContext(VerifiedContext);
   return (
-    <div className="App">
-      <CodeVerification />
-    </div>
+    <>{verificationContext.isVerified ? <Success /> : <CodeVerification />}</>
   );
 }
 
